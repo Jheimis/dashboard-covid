@@ -2,18 +2,6 @@
 covid_dashboard.py
 -------------------
 Dashboard COVID-19 (dados OWID) — Streamlit + Snowflake, via Snowpark.
-
-Fluxo (mesmo padrão do exemplo olist_dash.py):
-1. Botão "Carregar/Atualizar Dados no Snowflake": baixa o CSV público da OWID
-   já filtrado por país/período (evita subir as ~400 mil linhas originais) e
-   envia para o Snowflake via session.write_pandas (cria a tabela sozinho).
-2. Botão "Carregar Dashboard": lê a tabela de volta do Snowflake e guarda em
-   st.session_state para alimentar KPIs, gráficos e a aba de dados brutos.
-
-Pré-requisitos:
-- .streamlit/secrets.toml preenchido (ver secrets.toml.example) — seção [snowflake]
-- Role com permissão para criar database/schema/tabela (ex.: ACCOUNTADMIN,
-  ou uma role customizada com os grants equivalentes)
 """
 
 import streamlit as st
